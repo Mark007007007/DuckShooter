@@ -1,18 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     private int _goneEnemies = 0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject[] _barriers;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _barriers = GameObject.FindGameObjectsWithTag("Barrier");
     }
 
     public void AddToGoneEnemies()
@@ -24,4 +19,11 @@ public class GameManager : MonoBehaviour
     {
         return _goneEnemies;
     }
+
+    public GameObject[] GetBarriers()
+    {
+        return _barriers;
+    }
+
+
 }

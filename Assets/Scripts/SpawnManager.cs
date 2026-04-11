@@ -16,7 +16,6 @@ public class SpawnManager : MonoBehaviour
             {
                 enemy = Instantiate(_enemies[i], _spawnPos.position, Quaternion.identity);
                 enemy.GetComponent<AI>().SetEnemyID(i * 10 + j);
-                Debug.Log("hello: " + i);
             }
         }
     }
