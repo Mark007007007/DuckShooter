@@ -25,6 +25,7 @@ public class AI : MonoBehaviour
     private bool _reachedBarrier = false;
     private bool _leftBarrier = false;
     private float _speed = 0f;
+    private bool _isDead = false;
     void Start()
     {
         AssigningVariables();
@@ -83,14 +84,11 @@ public class AI : MonoBehaviour
         switch (_aIState)
         {
             case AIState.Run:
-                Debug.Log("Running");
                 IncreaseSpeed();
                 break;
             case AIState.Hide:
-                Debug.Log("Hiding");
                 break;
             case AIState.Death: 
-                Debug.Log("Dead");
                 StartCoroutine(Death());
                 break;
         }
@@ -106,9 +104,12 @@ public class AI : MonoBehaviour
 
     public void SetAIStateToDeath()
     {
+        if (_isDead == true)return;
         _aIState = AIState.Death;
         _gameManager.AddToGoneEnemies();
-        _uIManager.AddToPoints(50);
+        _uIManager.UpdateEnemiesText();
+        _uIManager.UpdateScoreText();
+        _isDead = true;
     }
 
     private IEnumerator Death()

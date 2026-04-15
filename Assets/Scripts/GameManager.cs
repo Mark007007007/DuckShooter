@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private GameObject[] _barriers;
     void Start()
     {
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
         _barriers = GameObject.FindGameObjectsWithTag("Barrier");
     }
 
@@ -24,6 +26,4 @@ public class GameManager : MonoBehaviour
     {
         return _barriers;
     }
-
-
 }

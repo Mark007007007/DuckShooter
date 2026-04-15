@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.67
+      value: -2.18693
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.088
+      value: 0.25084
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.3599997
+      value: 5.88855
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foe_creature
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9161502514154073488}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7409056517186747377}
   m_SourcePrefab: {fileID: 100100000, guid: cccdb3f0c50f02d4f9beb307700c6823, type: 3}
 --- !u!1 &6935585322925670269 stripped
 GameObject:
@@ -141,3 +152,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AI
   _startPoint: {fileID: 0}
   _endPoint: {fileID: 0}
+  _aIState: 0
+--- !u!135 &7409056517186747377
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935585322925670269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.021121
+  m_Center: {x: 0, y: 0.521121, z: 0}
