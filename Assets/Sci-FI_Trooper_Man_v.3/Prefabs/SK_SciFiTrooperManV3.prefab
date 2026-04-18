@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 639b6ce73b347e5429ac0526c9c29094, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 639b6ce73b347e5429ac0526c9c29094, type: 3}
       propertyPath: m_Controller
       value: 
@@ -140,6 +144,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.3552623
+  m_Height: 1.8268871
   m_Direction: 1
-  m_Center: {x: 0, y: 0.67763114, z: 0}
+  m_Center: {x: 0, y: 0.8758218, z: 0}

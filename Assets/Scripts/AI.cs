@@ -26,6 +26,8 @@ public class AI : MonoBehaviour
     private bool _leftBarrier = false;
     private float _speed = 0f;
     private bool _isDead = false;
+    private AudioManager _audioManager;
+    private int _typeId;
     void Start()
     {
         AssigningVariables();
@@ -50,6 +52,8 @@ public class AI : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+
+        _audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void InitializingVariables()
@@ -98,6 +102,7 @@ public class AI : MonoBehaviour
         if(!_agent.pathPending && _agent.remainingDistance < 0.5 && _leftBarrier == true)
         {
             _gameManager.AddToGoneEnemies();
+            _audioManager.PlayAICompletedTrackSound();
             Destroy(gameObject);
         }
     }
@@ -106,6 +111,7 @@ public class AI : MonoBehaviour
     {
         if (_isDead == true)return;
         _aIState = AIState.Death;
+        _audioManager.PlayAIDeathSound(_typeId);
         _gameManager.AddToGoneEnemies();
         _uIManager.UpdateEnemiesText();
         _uIManager.UpdateScoreText();
@@ -115,6 +121,7 @@ public class AI : MonoBehaviour
     private IEnumerator Death()
     {
         _agent.isStopped = true;
+        
         _animator.SetTrigger("Death");
         
         yield return new WaitForSeconds(1f);
@@ -144,6 +151,11 @@ public class AI : MonoBehaviour
     public void SetEnemyID(int id)
     {
         _id = id;
+    }
+
+    public void SetEnemyTypeId(int typeId)
+    {
+        _typeId = typeId;
     }
 
     IEnumerator HideAndWait()
