@@ -93,7 +93,6 @@ public class AI : MonoBehaviour
             case AIState.Hide:
                 break;
             case AIState.Death: 
-                StartCoroutine(Death());
                 break;
         }
     }
@@ -103,6 +102,7 @@ public class AI : MonoBehaviour
         {
             _gameManager.AddToGoneEnemies();
             _audioManager.PlayAICompletedTrackSound();
+            _uIManager.AddToEscapedEnemiesCount();
             Destroy(gameObject);
         }
     }
@@ -111,6 +111,7 @@ public class AI : MonoBehaviour
     {
         if (_isDead == true)return;
         _aIState = AIState.Death;
+        StartCoroutine(Death());
         _audioManager.PlayAIDeathSound(_typeId);
         _gameManager.AddToGoneEnemies();
         _uIManager.UpdateEnemiesText();
@@ -124,7 +125,7 @@ public class AI : MonoBehaviour
         
         _animator.SetTrigger("Death");
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 

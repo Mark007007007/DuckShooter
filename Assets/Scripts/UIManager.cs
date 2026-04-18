@@ -11,13 +11,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timeRemainingText;
     private float _timeRemaining;
     [SerializeField] private TextMeshProUGUI _ammoText;
+    [SerializeField] private TextMeshProUGUI _wonText;
+    [SerializeField] private TextMeshProUGUI _loseText;
+    [SerializeField] private TextMeshProUGUI _warningText;
     private int _ammoCount;
     private int _minute;
     private int _second;
+    private GameManager _gameManager;
+    private int _escapedEnemiesCount;
     void Start()
     {
         InitializingVariables();
         InitializingTextValues();
+        AssigningVariables();
+    }
+
+    private void AssigningVariables()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void InitializingVariables()
@@ -38,6 +49,14 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateTimeRemainingText();
+        if (_score / 50 >= 25 && _gameManager.GetGoneEnemies() == 30)
+        {
+            ShowWonText();
+        }
+        else if (_escapedEnemiesCount > 5)
+        {
+            ShowLoseText();
+        }
     }
 
     public void UpdateEnemiesText()
@@ -65,5 +84,25 @@ public class UIManager : MonoBehaviour
     {
         _ammoCount --;
         _ammoText.text = "Ammo " + _ammoCount;
+    }
+
+    private void ShowWonText()
+    {
+        _wonText.gameObject.SetActive(true);
+    }
+    private void ShowLoseText()
+    {
+        _loseText.gameObject.SetActive(true);
+    }
+    public void AddToEscapedEnemiesCount()
+    {
+        _escapedEnemiesCount ++;
+        ShowWarningText();
+    }
+    private void ShowWarningText()
+    {
+        _warningText.text = _escapedEnemiesCount + " Enemies Escaped";
+        if (_escapedEnemiesCount == 1) _warningText.text = "An enemy escaped";
+        _warningText.gameObject.SetActive(true);
     }
 }
